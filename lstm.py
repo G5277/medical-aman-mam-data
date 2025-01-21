@@ -7,8 +7,8 @@ import torch.nn as nn
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-if os.path.exists("SAMPLE_DATA.xlsx"):
-    data = pd.read_excel("SAMPLE_DATA.xlsx", engine="openpyxl")
+if os.path.exists("emg.xlsx"):
+    data = pd.read_excel("emg.xlsx", engine="openpyxl")
 else:
     print("File doesn't exist.")
     sys.exit(1)
@@ -47,14 +47,14 @@ hidden_size = 128
 num_layers = 2
 output_size = len(set(y)) 
 learning_rate = 1e-3
-num_epochs = 50
-batch_size = 20
+num_epochs = 20
+batch_size = 40
 
 lstm_model = LSTMModel(input_size, hidden_size, num_layers, output_size)
 optimizer = torch.optim.Adam(lstm_model.parameters(), lr=learning_rate)
 loss_function = nn.CrossEntropyLoss()
  
-TRAIN = False
+TRAIN = True
 if(TRAIN == True):
     def train_lstm_model():
         prev_loss = float("inf")
@@ -71,10 +71,10 @@ if(TRAIN == True):
 
             print(f"Epoch {epoch+1}/{num_epochs}, Loss: {loss.item():.4f}")
 
-            if abs(prev_loss - loss.item()) < 0.001:
-                print("Loss stabilized. Stopping early.")
-                break
-            prev_loss = loss.item()
+            # if abs(prev_loss - loss.item()) < 0.0000001:
+                # print("Loss stabilized. Stopping early.")
+                # break
+            # prev_loss = loss.item()
 
         torch.save(lstm_model.state_dict(), "lstm_model.pt")
         print("Model saved as lstm_model.pt")
