@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report
 
-data = pd.read_excel("SAMPLE_DATA.xlsx", engine="openpyxl")
+data = pd.read_excel("emg.xlsx", engine="openpyxl")
 
 # Features and target
 X = data[["m1", "m2", "m3"]]

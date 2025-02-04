@@ -5,19 +5,20 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-data = pd.read_excel("SAMPLE_DATA.xlsx", engine = "openpyxl")
-X = data[["m1","m2","m3"]].values
+data = pd.read_excel("./data/emg.xlsx", engine="openpyxl")
+X = data[["m1", "m2", "m3"]].values
 X = StandardScaler().fit_transform(X)
 X = torch.tensor(X)
 X = X.float().unsqueeze(1)
 y = torch.tensor(data["Movement"].values)
 
-X_train, X_test, y_train, y_test = train_test_split(X,y, test_size = 0.2, random_state = 42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42)
 
 
 cnet = model_CNN()
 
-with open("cnn/model.pt" , "rb") as f:
+with open("model.pt", "rb") as f:
     cnet.load_state_dict(load(f), strict=True)
 
 win = 0

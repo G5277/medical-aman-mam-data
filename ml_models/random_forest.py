@@ -6,7 +6,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, classification_report
 
 # data
-data = pd.read_excel("SAMPLE_DATA.xlsx", engine="openpyxl")
+data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
 
 # Features and target
 X = data[["m1", "m2", "m3"]]
@@ -31,14 +31,13 @@ y_pred = rf_model.predict(X_test)
 # eval
 print("Random Forest Accuracy:", accuracy_score(y_test, y_pred))
 
-# 90% acc
 # Save the model
-with open('ml_models/random_forest_model.pkl', 'wb') as file:
-    pkl.dump(rf_model, file)
+# with open('ml_models/random_forest_model.pkl', 'wb') as file:
+#     pkl.dump(rf_model, file)
 
-# Load the model back
-with open('ml_models/random_forest_model.pkl', 'rb') as file:
-    loaded_rf_model = pkl.load(file)
+# # Load the model back
+# with open('ml_models/random_forest_model.pkl', 'rb') as file:
+#     loaded_rf_model = pkl.load(file)
 
 # Make predictions with the loaded model
-predictions = loaded_rf_model.predict(X_test)
+# predictions = loaded_rf_model.predict(X_test)

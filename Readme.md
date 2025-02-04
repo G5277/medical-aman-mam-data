@@ -2,4 +2,4 @@
 # xgb - cnn + rf == 83
 # lr - cnn + xgb == 0.86
 
-# lstm - 78
+# lstm - 68
