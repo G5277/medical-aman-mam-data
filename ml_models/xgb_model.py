@@ -6,7 +6,7 @@ from sklearn.metrics import accuracy_score, classification_report
 from xgboost import XGBClassifier
 
 # Load data
-data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+data = pd.read_csv("./data/final_data.csv")  # , engine="openpyxl")
 
 # Features and target
 X = data[["m1", "m2", "m3"]]

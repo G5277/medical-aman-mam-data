@@ -32,8 +32,8 @@ y_pred = rf_model.predict(X_test)
 print("Random Forest Accuracy:", accuracy_score(y_test, y_pred))
 
 # Save the model
-# with open('ml_models/random_forest_model.pkl', 'wb') as file:
-#     pkl.dump(rf_model, file)
+with open('ml_models/random_forest_model.pkl', 'wb') as file:
+    pkl.dump(rf_model, file)
 
 # # Load the model back
 # with open('ml_models/random_forest_model.pkl', 'rb') as file:

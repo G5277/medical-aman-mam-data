@@ -8,8 +8,8 @@ from sklearn.preprocessing import StandardScaler
 
 from tqdm import tqdm
 
-if (os.path.exists("./data/emg_sample.xlsx")):
-    data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+if (os.path.exists("./data/final_data.csv")):
+    data = pd.read_csv("./data/final_data.csv")  # , engine="openpyxl")
 else:
     print("File doesn't exist.")
 
@@ -73,6 +73,7 @@ def train_model():
                 optimizer.step()
         else:
             print(f"ending, {loss-prev}")
+            break
         print(f"{epoch} : {loss}")
 
     with open("model.pt", "wb") as f:

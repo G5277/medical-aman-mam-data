@@ -18,17 +18,17 @@ else:
 cpu = torch.device('cpu')
 
 print(device)
-# if os.path.exists("./data/clean.csv"):
-#     data = pd.read_csv("./data/clean.csv")
-# else:
-#     print("File doesn't exist.")
-#     sys.exit(1)
-
-if os.path.exists("./data/emg_sample.xlsx"):
-    data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+if os.path.exists("./data/final_data.csv"):
+    data = pd.read_csv("./data/final_data.csv")
 else:
     print("File doesn't exist.")
     sys.exit(1)
+
+# if os.path.exists("./data/emg_sample.xlsx"):
+#     data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+# else:
+#     print("File doesn't exist.")
+#     sys.exit(1)
 
 
 data = data.dropna()

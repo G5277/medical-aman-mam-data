@@ -7,12 +7,16 @@ import torch.nn as nn
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 
-if os.path.exists("./data/emg_sample.xlsx"):
-    data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+# if os.path.exists("./data/emg_sample.xlsx"):
+#     data = pd.read_excel("./data/emg_sample.xlsx", engine="openpyxl")
+# else:
+#     print("File doesn't exist.")
+#     sys.exit(1)
+if os.path.exists("./data/final_data.csv"):
+    data = pd.read_csv("./data/final_data.csv")
 else:
     print("File doesn't exist.")
     sys.exit(1)
-
 data = data.dropna()
 
 X = data[["m1", "m2", "m3"]].values
@@ -36,10 +40,10 @@ class LSTMModel(nn.Module):
     def __init__(self, input_size, hidden_size, num_layers, output_size, dropout=0.3):
         super(LSTMModel, self).__init__()
         self.lstm = nn.LSTM(input_size, hidden_size, num_layers,
-                            batch_first=True, bidirectional=True)
+                            batch_first=True, bidirectional=False)
         self.dropout = nn.Dropout(dropout)
         # *2 for bidirectional
-        self.fc = nn.Linear(hidden_size * 2, output_size)
+        self.fc = nn.Linear(hidden_size, output_size)
 
     def forward(self, x):
         out, _ = self.lstm(x)

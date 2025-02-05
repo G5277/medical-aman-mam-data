@@ -1,5 +1,11 @@
-# lr - cnn + rf == 86.52329749103943
-# xgb - cnn + rf == 83
-# lr - cnn + xgb == 0.86
+new data
 
-# lstm - 68
+XGBoost Accuracy: 0.6275686908335257
+
+LSTM : 0.63
+
+Random Forest Accuracy: 0.873015873015873
+
+CNN LSTM Ensemble Accuracy: 0.6220849688293697
+
+ENSEMBLE CNN RF -- Accuracy: 0.88

@@ -5,7 +5,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
-data = pd.read_excel("./data/emg.xlsx", engine="openpyxl")
+data = pd.read_csv("./data/final_data.csv")  # , engine="openpyxl")
 X = data[["m1", "m2", "m3"]].values
 X = StandardScaler().fit_transform(X)
 X = torch.tensor(X)
